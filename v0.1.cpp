@@ -1,4 +1,3 @@
-# 3ld
 #include <iostream>
 #include <stdio.h>
 #include <iomanip>
@@ -9,7 +8,7 @@ struct studentai
 {
     char vardas[20], pavarde[20];
     int nd, egz;
-    float galut;
+    double galut;
 };
 int main()
 {
@@ -25,5 +24,5 @@ cin>>a1.egz;
 a1.galut=(0.4*a1.nd)+(0.6*a1.egz);
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(20)<<"Galutinis (Vid.)"<<endl;
 cout<<"-"<<setfill('-')<<setw(35)<<"-"<<endl;
-cout<<left<<setfill(' ')<<setw(10)<<a1.vardas<<setfill(' ')<<setw(10)<<a1.pavarde<<setfill(' ')<<setw(15)<<setprecision(3)<<right<<a1.galut<<endl;
+cout<<left<<setfill(' ')<<setw(10)<<a1.vardas<<setfill(' ')<<setw(10)<<a1.pavarde<<setfill(' ')<<setw(15)<<right<<fixed<<setprecision(2)<<a1.galut<<endl;
 }
