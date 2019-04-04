@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <string>
 #include <numeric>
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 using std::vector;
@@ -18,8 +20,14 @@ struct studentas
 };
 int main()
 {
-double nd; char uzkl='t';
+ifstream is;
+is.open("kursiokai.txt");
+double nd; char uzkl='t'; string budas;
 vector<studentas> lent; studentas temp;
+cout<<"Iveskite programos veikimo buda(rankinis,isfailo,atsitiktinis)"<<endl;
+cin>>budas;
+if (budas=="rankinis")                                                                                         //Rankinis ivedimas
+{
 while (uzkl!='n')
 {
 cout<<"Iveskite studento varda"<<endl;
@@ -29,6 +37,7 @@ cin>>temp.pavarde; nd=1;
 cout<<"Iveskite namu darbu rezultatus(ivede 0 pereisite prie sekancio etapo)"<<endl;         //Namu darbu ivedimo ciklas
 while(nd!=0)
 {
+cin.clear(); cin.ignore(256,'\n');
 cin>>nd;
 if(nd>0&&nd<=10)
 {
@@ -42,7 +51,7 @@ else
 cout<<"Namu darbu rezultatai, tik desimtbaleje sistemoje"<<endl;
 }
 }
-cout<<"Iveskite studento egzamino rezultata"<<endl;   //Egzamino ivedimas
+cout<<"Iveskite studento egzamino rezultata"<<endl;                                          //Egzamino ivedimas
 cin.clear(); cin.ignore(256,'\n');
 cin>>temp.egz;
 if(temp.egz>0&&temp.egz<=10){}
@@ -50,16 +59,16 @@ else
 {
 cout<<"Egzamino rezultatas, tik desimtbaleje sistemoje"<<endl;
 }
-temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size())); //Galutinis su vidurkiu
+temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size()));  //Galutinis su vidurkiu
 temp.galutv.push_back((temp.vdrk.back()*0.4)+(temp.egz*0.6));
-size_t size=temp.ndm.size();                         //Galutinis su mediana
+size_t size=temp.ndm.size();                                                                //Galutinis su mediana
 if (size%2==0)
 {
 temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*0.6));
 }
 else
 {
-temp.galutm.push_back(((temp.ndm[size / 2])*0.4)+(temp.egz*0.6));
+temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
 }
 lent.push_back(temp);
 temp.ndm.clear();
@@ -68,6 +77,24 @@ temp.galutv.clear();
 temp.galutm.clear();
 cout<<"Norint baigti ivedima, iveskite n"<<endl;
 cin>>uzkl;
+}
+}
+else if (budas=="isfailo")                                                                                     //Ivedimas is failo
+{
+if(is.fail())
+{
+cout<<"Failo atverti nepavyko"<<endl;
+exit(-1);
+}
+else
+{
+while(is.eof())
+{
+is>>temp.vardas>>temp.pavarde;
+lent.push_back(temp);
+is.close();
+}
+}
 }
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl; // Isvedimas
 cout<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
