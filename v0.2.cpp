@@ -7,6 +7,7 @@
 #include <numeric>
 #include <fstream>
 #include <cstdlib>
+#include <sstream>
 
 using namespace std;
 using std::vector;
@@ -26,7 +27,7 @@ double nd; char uzkl='t'; string budas;
 vector<studentas> lent; studentas temp;
 cout<<"Iveskite programos veikimo buda(rankinis,isfailo,atsitiktinis)"<<endl;
 cin>>budas;
-if (budas=="rankinis")                                                                                         //Rankinis ivedimas
+if (budas=="rankinis")                                                                        //Rankinis ivedimas
 {
 while (uzkl!='n')
 {
@@ -79,7 +80,7 @@ cout<<"Norint baigti ivedima, iveskite n"<<endl;
 cin>>uzkl;
 }
 }
-else if (budas=="isfailo")                                                                                     //Ivedimas is failo
+else if (budas=="isfailo")                                                                    //Ivedimas is failo
 {
 if(is.fail())
 {
@@ -88,12 +89,10 @@ exit(-1);
 }
 else
 {
-while(is.eof())
-{
-is>>temp.vardas>>temp.pavarde;
-lent.push_back(temp);
+char str[100];
+while(is.get(*str))
+cout<<str;
 is.close();
-}
 }
 }
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl; // Isvedimas
@@ -106,3 +105,5 @@ cout<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<
 }
 return 0;
 }
+
+
