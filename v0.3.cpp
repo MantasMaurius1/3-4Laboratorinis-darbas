@@ -17,12 +17,34 @@ struct studentas
     double egz;
     vector<double> ndm, vdrk, galutv, galutm;
 };
+
+double nd; char uzkl='t'; string budas; char A[9999];
+vector<studentas> lent; studentas temp;
+
+void skaiciavimai(){
+sort(temp.ndm.begin(), temp.ndm.end());
+temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size()));  //Galutinis su vidurkiu
+temp.galutv.push_back((temp.vdrk.back()*0.4)+(temp.egz*0.6));
+size_t size=temp.ndm.size();                                                                //Galutinis su mediana
+if (size%2==0)
+{
+temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*0.6));
+}
+else
+{
+temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
+}
+lent.push_back(temp);
+temp.ndm.clear();
+temp.vdrk.clear();
+temp.galutv.clear();
+temp.galutm.clear();
+}
+
 int main()
 {
 ifstream is;
 is.open("kursiokai.txt");
-double nd; char uzkl='t'; string budas; char A[9999];
-vector<studentas> lent; studentas temp;
 cout<<"Iveskite programos veikimo buda(rankinis,isfailo,atsitiktinis)"<<endl;
 cin>>budas;
 if (budas=="rankinis")                                                                        //Rankinis ivedimas
@@ -42,7 +64,6 @@ if(nd>0&&nd<=10)
 {
 temp.ndm.push_back(nd);
 temp.ndm.size();
-sort(temp.ndm.begin(), temp.ndm.end());
 }
 else if(nd==0){}
 else
@@ -58,22 +79,7 @@ else
 {
 cout<<"Egzamino rezultatas, tik desimtbaleje sistemoje"<<endl;
 }
-temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size()));  //Galutinis su vidurkiu
-temp.galutv.push_back((temp.vdrk.back()*0.4)+(temp.egz*0.6));
-size_t size=temp.ndm.size();                                                                //Galutinis su mediana
-if (size%2==0)
-{
-temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*0.6));
-}
-else
-{
-temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
-}
-lent.push_back(temp);
-temp.ndm.clear();
-temp.vdrk.clear();
-temp.galutv.clear();
-temp.galutm.clear();
+skaiciavimai();
 cout<<"Norint baigti ivedima, iveskite n"<<endl;
 cin>>uzkl;
 }
@@ -96,23 +102,7 @@ temp.ndm.size();
 temp.ndm.push_back(nd);
 }
 is>>temp.egz;
-sort(temp.ndm.begin(), temp.ndm.end());
-temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size()));  //Galutinis su vidurkiu
-temp.galutv.push_back((temp.vdrk.back()*0.4)+(temp.egz*0.6));
-size_t size=temp.ndm.size();                                                                //Galutinis su mediana
-if (size%2==0)
-{
-temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*0.6));
-}
-else
-{
-temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
-}
-lent.push_back(temp);
-temp.ndm.clear();
-temp.vdrk.clear();
-temp.galutv.clear();
-temp.galutm.clear();
+skaiciavimai();
 }
 }
 }
@@ -126,5 +116,3 @@ cout<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<
 }
 return 0;
 }
-
-
