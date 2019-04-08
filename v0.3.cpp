@@ -6,7 +6,8 @@
 #include <string>
 #include <numeric>
 #include <fstream>
-#include <cstdlib>
+#include <exception>
+#include "skaiciavimai.h"
 
 using namespace std;
 using std::vector;
@@ -43,9 +44,7 @@ temp.galutm.clear();
 
 int main()
 {
-ifstream is;
-is.open("kursiokai.txt");
-cout<<"Iveskite programos veikimo buda(rankinis,isfailo,atsitiktinis)"<<endl;
+BUDAS: cout<<"Iveskite programos veikimo buda(rankinis,isfailo,atsitiktinis)"<<endl;
 cin>>budas;
 if (budas=="rankinis")                                                                        //Rankinis ivedimas
 {
@@ -58,34 +57,47 @@ cin>>temp.pavarde; nd=1;
 cout<<"Iveskite namu darbu rezultatus(ivede 0 pereisite prie sekancio etapo)"<<endl;         //Namu darbu ivedimo ciklas
 while(nd!=0)
 {
-cin.clear(); cin.ignore(256,'\n');
+ND:cin.clear(); cin.ignore(256,'\n');
 cin>>nd;
 if(nd>0&&nd<=10)
 {
 temp.ndm.push_back(nd);
 temp.ndm.size();
 }
-else if(nd==0){}
+else if (nd==0){
+if (temp.ndm.size()==0)
+{
+cout<<"Neivesti namu darbai"<<endl;
+cout<<"Iveskite namu darbu rezultatus(ivede 0 pereisite prie sekancio etapo)"<<endl;
+goto ND;
+}
+}
 else
 {
-cout<<"Namu darbu rezultatai, tik desimtbaleje sistemoje"<<endl;
+cout<<"Klaida"<<endl;
+cout<<"Namu darbu rezultatai tik desimtbaleje sistemoje"<<endl;
 }
 }
 cout<<"Iveskite studento egzamino rezultata"<<endl;                                          //Egzamino ivedimas
-cin.clear(); cin.ignore(256,'\n');
+EGZ:cin.clear(); cin.ignore(256,'\n');
 cin>>temp.egz;
 if(temp.egz>0&&temp.egz<=10){}
 else
 {
+cout<<"Klaida"<<endl;
 cout<<"Egzamino rezultatas, tik desimtbaleje sistemoje"<<endl;
+cout<<"Iveskite studento egzamino rezultata"<<endl;
+goto EGZ;
 }
 skaiciavimai();
 cout<<"Norint baigti ivedima, iveskite n"<<endl;
 cin>>uzkl;
 }
 }
-if (budas=="isfailo")                                                                    //Ivedimas is failo
+else if (budas=="isfailo")                                                                    //Ivedimas is failo
 {
+ifstream is;
+is.open("kursiokai.txt");
 if(is.fail())
 {
 cout<<"Failo atverti nepavyko"<<endl;
@@ -105,6 +117,11 @@ is>>temp.egz;
 skaiciavimai();
 }
 }
+}
+else
+{
+cout<<"Klaida"<<endl;
+goto BUDAS;
 }
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl; // Isvedimas
 cout<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
