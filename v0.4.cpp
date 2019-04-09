@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <iomanip>
 #include <vector>
 #include <algorithm>
@@ -7,7 +9,6 @@
 #include <numeric>
 #include <fstream>
 #include <exception>
-#include "skaiciavimai.h"
 
 using namespace std;
 using std::vector;
@@ -116,6 +117,23 @@ temp.ndm.push_back(nd);
 is>>temp.egz;
 skaiciavimai();
 }
+}
+}
+else if (budas=="atsitiktinis")
+{
+cout<<"Iveskite studentu skaiciu, kuriu duomenis generuosime atsitiktiniu budu"<<endl;
+double randsk;
+cin>>randsk;
+srand (time(NULL));
+for(int i=0;i<randsk;i++){
+temp.vardas="Vardas";
+temp.pavarde="Pavarde";
+for(int j=0;j<5;j++){
+nd=rand()%10+1;
+temp.ndm.push_back(nd);
+}
+temp.egz=rand()%10+1;
+skaiciavimai();
 }
 }
 else
