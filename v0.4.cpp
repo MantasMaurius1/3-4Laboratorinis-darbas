@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <iomanip>
 #include <vector>
@@ -9,6 +8,7 @@
 #include <numeric>
 #include <fstream>
 #include <exception>
+#include <random>
 
 using namespace std;
 using std::vector;
@@ -122,18 +122,25 @@ skaiciavimai();
 else if (budas=="atsitiktinis")
 {
 cout<<"Iveskite studentu skaiciu, kuriu duomenis generuosime atsitiktiniu budu"<<endl;
-double randsk;
+int randsk; int w;
 cin>>randsk;
-srand (time(NULL));
+random_device rd;
+mt19937 eng(rd());
+uniform_int_distribution<> distr(1,10);
 for(int i=0;i<randsk;i++){
-temp.vardas="Vardas";
-temp.pavarde="Pavarde";
+w++;
+temp.vardas+="Vardas";
+temp.vardas+= w;
+temp.pavarde+="Pavarde";
+temp.pavarde+= w;
 for(int j=0;j<5;j++){
-nd=rand()%10+1;
+nd=distr(eng);
 temp.ndm.push_back(nd);
 }
-temp.egz=rand()%10+1;
+temp.egz=distr(eng);
 skaiciavimai();
+temp.vardas.clear();
+temp.pavarde.clear();
 }
 }
 else
