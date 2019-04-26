@@ -122,17 +122,16 @@ skaiciavimai();
 else if (budas=="atsitiktinis")
 {
 cout<<"Iveskite studentu skaiciu, kuriu duomenis generuosime atsitiktiniu budu"<<endl;
-int randsk; int w;
+int randsk;
 cin>>randsk;
 random_device rd;
 mt19937 eng(rd());
 uniform_int_distribution<> distr(1,10);
 for(int i=0;i<randsk;i++){
-w++;
-temp.vardas+="Vardas";
-temp.vardas+= w;
-temp.pavarde+="Pavarde";
-temp.pavarde+= w;
+temp.vardas="Vardas";
+temp.vardas+=to_string(i);
+temp.pavarde="Pavarde";
+temp.pavarde+=to_string(i);
 for(int j=0;j<5;j++){
 nd=distr(eng);
 temp.ndm.push_back(nd);
