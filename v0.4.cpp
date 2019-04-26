@@ -127,6 +127,8 @@ cin>>randsk;
 random_device rd;
 mt19937 eng(rd());
 uniform_int_distribution<> distr(1,10);
+ofstream os;
+os.open("gg.txt");
 for(int i=0;i<randsk;i++){
 temp.vardas="Vardas";
 temp.vardas+=to_string(i);
@@ -138,9 +140,17 @@ temp.ndm.push_back(nd);
 }
 temp.egz=distr(eng);
 skaiciavimai();
+}
+os<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl;
+os<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
+for(auto i: lent)
+{
+for(auto v: i.galutv)
+for(auto m: i.galutm)
+os<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<<setfill(' ')<<setw(15)<<right<<fixed<<setprecision(2)<<v<<setfill(' ')<<setw(18)<<right<<fixed<<setprecision(2)<<m<<endl;
+}
 temp.vardas.clear();
 temp.pavarde.clear();
-}
 }
 else
 {
