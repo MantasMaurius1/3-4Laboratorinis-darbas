@@ -3,7 +3,7 @@
 Šioje versijoje vykdomas konteinerių testavimas:
 
 Matuojamas vidutinis programos veikimo laikas, kai struktūra studentas naudoja: vector, list, deque tipo konteinerius.
-Vidutio greičio matavimo objektas: Atsitiktinai sugeneruoti 5000 studentų, namų darbų ir egzamino rezultatus, iš jų išvesti galutinius pažymius.
+Vidutinio greičio matavimo objektas: Atsitiktinai sugeneruoti 5000 studentų, namų darbų ir egzamino rezultatus, iš jų išvesti galutinius pažymius.
 
 Su kiekvienu konteineriu matavimai daryti po 6 kartus ir išvestas aritmetinis vidurkis.
 
