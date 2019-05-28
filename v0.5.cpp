@@ -3,6 +3,7 @@
 #include <time.h>
 #include <iomanip>
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <string>
 #include <numeric>
@@ -23,7 +24,7 @@ struct studentas
 };
 
 double nd; char uzkl='t'; string budas; char A[9999];
-vector<studentas> lent; studentas temp;
+list<studentas> lent; studentas temp;
 
 void skaiciavimai(){
 sort(temp.ndm.begin(), temp.ndm.end());
