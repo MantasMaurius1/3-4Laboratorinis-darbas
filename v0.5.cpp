@@ -92,13 +92,18 @@ cout<<"Egzamino rezultatas, tik desimtbaleje sistemoje"<<endl;
 cout<<"Iveskite studento egzamino rezultata"<<endl;
 goto EGZ;
 }
-skaiciavimai();
 cout<<"Norint baigti ivedima, iveskite n"<<endl;
 cin>>uzkl;
+auto start = high_resolution_clock::now();
+skaiciavimai();
+auto end = high_resolution_clock::now();
+duration<double> diff= end-start;
+cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 }
 }
 else if (budas=="isfailo")                                                                    //Ivedimas is failo
 {
+auto start = high_resolution_clock::now();
 ifstream is;
 is.open("kursiokai.txt");
 if(is.fail())
@@ -120,6 +125,9 @@ is>>temp.egz;
 skaiciavimai();
 }
 }
+auto end = high_resolution_clock::now();
+duration<double> diff= end-start;
+cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 }
 else if (budas=="atsitiktinis")
 {
@@ -144,6 +152,9 @@ temp.ndm.push_back(nd);
 temp.egz=distr(eng);
 skaiciavimai();
 }
+auto end = high_resolution_clock::now();
+duration<double> diff= end-start;
+cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 os<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl;
 os<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
 for(auto i: lent)
@@ -154,9 +165,6 @@ os<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<<s
 }
 temp.vardas.clear();
 temp.pavarde.clear();
-auto end = high_resolution_clock::now();
-duration<double> diff= end-start;
-cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 }
 else
 {
