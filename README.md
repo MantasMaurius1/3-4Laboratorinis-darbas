@@ -1,4 +1,4 @@
-# v0.5
+# v1.0
 
 Šioje versijoje vykdomas konteinerių testavimas:
 
