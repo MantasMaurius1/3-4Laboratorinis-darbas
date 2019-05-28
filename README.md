@@ -7,6 +7,6 @@ Vidutinio greičio matavimo objektas: Atsitiktinai sugeneruoti 5000 studentų, n
 
 Su kiekvienu konteineriu matavimai daryti po 6 kartus ir išvestas aritmetinis vidurkis.
 
-Vector konteinerio vidutinis programos veikimo laikas ≈ 48 msec.
-List konteinerio vidutinis programos veikimo laikas ≈ 35 msec.
-Deque konteinerio vidutinis programos veikimo laikas ≈ 30 msec.
+* Vector konteinerio vidutinis programos veikimo laikas ≈ 48 msec.
+* List konteinerio vidutinis programos veikimo laikas ≈ 35 msec.
+* Deque konteinerio vidutinis programos veikimo laikas ≈ 30 msec.
