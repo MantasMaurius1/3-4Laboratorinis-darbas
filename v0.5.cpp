@@ -9,9 +9,11 @@
 #include <fstream>
 #include <exception>
 #include <random>
+#include <chrono>
 
 using namespace std;
 using std::vector;
+using namespace std::chrono;
 
 struct studentas
 {
@@ -129,6 +131,7 @@ mt19937 eng(rd());
 uniform_int_distribution<> distr(1,10);
 ofstream os;
 os.open("gg.txt");
+auto start = high_resolution_clock::now();
 for(int i=0;i<randsk;i++){
 temp.vardas="Vardas";
 temp.vardas+=to_string(i);
@@ -151,6 +154,9 @@ os<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<<s
 }
 temp.vardas.clear();
 temp.pavarde.clear();
+auto end = high_resolution_clock::now();
+duration<double> diff= end-start;
+cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 }
 else
 {
