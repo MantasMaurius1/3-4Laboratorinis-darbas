@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <vector>
 #include <deque>
+#include <list>
 #include <algorithm>
 #include <string>
 #include <numeric>
@@ -24,7 +25,10 @@ struct studentas
 };
 
 double nd; char uzkl='t'; string budas; char A[9999];
-deque<studentas> lent; studentas temp;
+deque<studentas> kietekai, vargsiukai; studentas temp;
+
+ifstream is;
+ofstream os;
 
 void skaiciavimai(){
 sort(temp.ndm.begin(), temp.ndm.end());
@@ -39,7 +43,14 @@ else
 {
 temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
 }
-lent.push_back(temp);
+if (temp.galutv.front()<5 && temp.galutm.front()<5)
+{
+vargsiukai.push_back(temp);
+}
+else
+{
+kietekai.push_back(temp);
+}
 temp.ndm.clear();
 temp.vdrk.clear();
 temp.galutv.clear();
@@ -105,7 +116,6 @@ cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count
 else if (budas=="isfailo")                                                                    //Ivedimas is failo
 {
 auto start = high_resolution_clock::now();
-ifstream is;
 is.open("kursiokai.txt");
 if(is.fail())
 {
@@ -130,7 +140,7 @@ auto end = high_resolution_clock::now();
 duration<double> diff= end-start;
 cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
 }
-else if (budas=="atsitiktinis")
+else if (budas=="atsitiktinis")                                                        // atsitiktinis
 {
 cout<<"Iveskite studentu skaiciu, kuriu duomenis generuosime atsitiktiniu budu"<<endl;
 int randsk;
@@ -138,8 +148,6 @@ cin>>randsk;
 random_device rd;
 mt19937 eng(rd());
 uniform_int_distribution<> distr(1,10);
-ofstream os;
-os.open("gg.txt");
 auto start = high_resolution_clock::now();
 for(int i=0;i<randsk;i++){
 temp.vardas="Vardas";
@@ -156,9 +164,22 @@ skaiciavimai();
 auto end = high_resolution_clock::now();
 duration<double> diff= end-start;
 cout<<"Programos veikimo laikas: "<<duration_cast<milliseconds>(end-start).count()<<" msec"<<endl;
+os.open("vargsiukai.txt");
 os<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl;
 os<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
-for(auto i: lent)
+for(auto i: vargsiukai)
+{
+for(auto v: i.galutv)
+for(auto m: i.galutm)
+os<<left<<setfill(' ')<<setw(10)<<i.vardas<<setfill(' ')<<setw(10)<<i.pavarde<<setfill(' ')<<setw(15)<<right<<fixed<<setprecision(2)<<v<<setfill(' ')<<setw(18)<<right<<fixed<<setprecision(2)<<m<<endl;
+}
+temp.vardas.clear();
+temp.pavarde.clear();
+os.close();
+os.open("kietekai.txt");
+os<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl;
+os<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
+for(auto i: kietekai)
 {
 for(auto v: i.galutv)
 for(auto m: i.galutm)
@@ -174,7 +195,7 @@ goto BUDAS;
 }
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl; // Isvedimas
 cout<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
-for(auto i: lent)
+for(auto i: kietekai)
 {
 for(auto v: i.galutv)
 for(auto m: i.galutm)
