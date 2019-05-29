@@ -25,7 +25,7 @@ struct studentas
 };
 
 double nd; char uzkl='t'; string budas; char A[9999];
-deque<studentas> kietekai, vargsiukai; studentas temp;
+vector<studentas> lent, kietekai, vargsiukai; studentas temp;
 
 ifstream is;
 ofstream os;
@@ -35,20 +35,17 @@ sort(temp.ndm.begin(), temp.ndm.end());
 temp.vdrk.push_back((accumulate(temp.ndm.begin() , temp.ndm.end(), 0))/(temp.ndm.size()));  //Galutinis su vidurkiu
 temp.galutv.push_back((temp.vdrk.back()*0.4)+(temp.egz*0.6));
 size_t size=temp.ndm.size();                                                                //Galutinis su mediana
-if (size%2==0)
-{
+if (size%2==0){
 temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*0.6));
 }
-else
-{
+else{
 temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
 }
-if (temp.galutv.front()<5 && temp.galutm.front()<5)
-{
+lent.push_back(temp);
+if (temp.galutv.front()<5 && temp.galutm.front()<5){
 vargsiukai.push_back(temp);
 }
-else
-{
+else{
 kietekai.push_back(temp);
 }
 temp.ndm.clear();
@@ -195,7 +192,7 @@ goto BUDAS;
 }
 cout<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl; // Isvedimas
 cout<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
-for(auto i: kietekai)
+for(auto i: lent)
 {
 for(auto v: i.galutv)
 for(auto m: i.galutm)
