@@ -2,4 +2,4 @@
 
 * Šioje versijoje studentų duomenų nuskaitymui pradėtos naudoti struktūros;
 * Ištaisytos klaidos;
-* Patobulintas galutinio balo skaičiavimo algoritmas;
+* Patobulintas galutinio balo skaičiavimo ir išvedimo algoritmas;
