@@ -25,7 +25,7 @@ struct studentas
 };
 
 double nd; char uzkl='t'; string budas; char A[9999];
-vector<studentas> lent, kietekai, vargsiukai; studentas temp;
+deque<studentas> lent, vargsiukai; studentas temp;
 
 ifstream is;
 ofstream os;
@@ -41,12 +41,11 @@ temp.galutm.push_back((((temp.ndm[size/2-1]+temp.ndm[size/2])/2)*0.4)+(temp.egz*
 else{
 temp.galutm.push_back(((temp.ndm[size/2])*0.4)+(temp.egz*0.6));
 }
-lent.push_back(temp);
 if (temp.galutv.front()<5 && temp.galutm.front()<5){
 vargsiukai.push_back(temp);
 }
 else{
-kietekai.push_back(temp);
+lent.push_back(temp);
 }
 temp.ndm.clear();
 temp.vdrk.clear();
@@ -176,7 +175,7 @@ os.close();
 os.open("kietekai.txt");
 os<<left<<setw(10)<<"Vardas"<<setw(10)<<"Pavarde"<<setw(15)<<"Galutinis (Vid.)"<<" / "<<"Galutinis(Med.)"<<endl;
 os<<"-"<<setfill('-')<<setw(53)<<"-"<<endl;
-for(auto i: kietekai)
+for(auto i: lent)
 {
 for(auto v: i.galutv)
 for(auto m: i.galutm)
