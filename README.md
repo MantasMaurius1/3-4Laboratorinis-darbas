@@ -1,12 +1,16 @@
 # v1.0
 
-Šioje versijoje vykdomas konteinerių testavimas:
+Šioje versijoje vykdomas studentų rūšiavimo (dalijimo) į dvi kategorijas ("vargšiukų" ir "kietekų") optimizavimas:
 
-Matuojamas vidutinis programos veikimo laikas, kai struktūra studentas naudoja: vector, list, deque tipo konteinerius.
-Vidutinio greičio matavimo objektas: Atsitiktinai sugeneruoti 5000 studentų, namų darbų ir egzamino rezultatus, iš jų išvesti galutinius pažymius.
+Naudojant pirmą strategiją vidutinis programos veikimo laikas, generuojant 1000 atsitiktinių studentų duomenų, su šiais konteineriais:
 
-Su kiekvienu konteineriu matavimai daryti po 6 kartus ir išvestas aritmetinis vidurkis.
+* Vector ≈ 
+* List ≈
+* Deque ≈
 
-* Vector konteinerio vidutinis programos veikimo laikas ≈ 48 msec.
-* List konteinerio vidutinis programos veikimo laikas ≈ 35 msec.
-* Deque konteinerio vidutinis programos veikimo laikas ≈ 30 msec.
+Naudojant antrą strategiją vidutinis programos veikimo laikas, generuojant 1000 atsitiktinių studentų duomenų, su šiais konteineriais:
+
+* Vector ≈
+* List ≈
+* Deque ≈
+
