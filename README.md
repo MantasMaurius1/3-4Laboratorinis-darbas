@@ -10,3 +10,5 @@ Su kiekvienu konteineriu matavimai daryti po 6 kartus ir išvestas aritmetinis v
 * Vector konteinerio vidutinis programos veikimo laikas ≈ 48 msec.
 * List konteinerio vidutinis programos veikimo laikas ≈ 35 msec.
 * Deque konteinerio vidutinis programos veikimo laikas ≈ 30 msec.
+
+Optimizuojant programos veikimo spartą, struktūrai - studentas, pradėtas naudoti Deque konteineris.
