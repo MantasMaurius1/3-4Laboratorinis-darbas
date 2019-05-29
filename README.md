@@ -14,5 +14,5 @@ Naudojant antrą strategiją vidutinis programos veikimo laikas, generuojant 100
 * List ≈ 6,8 msec
 * Deque ≈ 7 msec
 
-P.S. Su kiekviena strategija ir jai naudojamu konteineriu, bandymai atlikti 5 kartus ir išvestas aritmetinis vidurkis.
+_P.S. Su kiekviena strategija ir jai naudojamu konteineriu, bandymai atlikti 5 kartus ir išvestas aritmetinis vidurkis._
 
