@@ -16,4 +16,4 @@ Naudojant antrą strategiją vidutinis programos veikimo laikas, generuojant 100
 
 _P.S. Su kiekviena strategija ir jai naudojamu konteineriu, bandymai atlikti 5 kartus ir išvestas aritmetinis vidurkis._
 
-Atlikus matavimus, pasirinkta 2 rūšiavimo strategija, naudojant konteinerį List.
+Atlikus matavimus, pasirinkta antra strategija, dėl neryškaus skirtumo, konteinerio tipas nuo v0.5 verijos - nekeičiamas.
